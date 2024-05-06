@@ -1,7 +1,8 @@
 const Footer = () => {
     return (
         <footer>
-            <h1>This is the footer.</h1>
+            <p>Built by <a href="https://joannahosking.com/">Joanna Hosking</a></p>
+            <p>Copyright &copy; {new Date().getFullYear()}</p>
         </footer>
     )
 }

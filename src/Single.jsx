@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "./supabaseClient";
-import Grid from './components/Grid';
+import Grid from "./components/Grid";
 
 function Single(params) {
   const { id } = useParams();
   const [word, setWord] = useState(undefined);
   const [isLoading, setIsLoading] = useState(true);
-  const [solved, setSolved] = useState(false);
 
   useEffect(() => {
     getWord();
@@ -20,25 +19,28 @@ function Single(params) {
       .eq("short_id", id)
       .single();
 
-    setWord(data);
+      if (data) {
+        setWord(data);
+      } else {
+        window.location = window.location.origin + '/404';
+      }
   }
 
   useEffect(() => {
-    console.log(word);
     if (word) setIsLoading(false);
   }, [word]);
 
   if (isLoading) {
     return (
       <>
-        <p>Loading...</p>
+        <p className="loading">Loading...</p>
       </>
     );
   }
 
   return (
     <>
-      <Grid word={word} setSolved={setSolved} />
+      <Grid word={word} />
     </>
   );
 }

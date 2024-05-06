@@ -36,14 +36,17 @@ const Add = (props) => {
 
   return (
     <form onSubmit={handleAdd}>
+      <label htmlFor="letters">Word</label>
       <input
+        id="letters"
         type="text"
         name="letters"
         placeholder="EXAMPLE"
         maxLength="10"
         defaultValue={""}
       />
-      <select name="attempts" defaultValue="6">
+      <label htmlFor="attempts">Attempts</label>
+      <select id="attempts" name="attempts" defaultValue="6">
         {[3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
           <option key={i} value={i}>
             {i}

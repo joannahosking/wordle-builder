@@ -5,13 +5,13 @@ const Error = () => {
   console.error(error);
 
   return (
-    <main>
-      <h1>Oops!</h1>
-      <p>Sorry, an error has occurred.</p>
+    <div className="error">
+      <h2>Oops!</h2>
+      <p>Sorry, the following error has occurred:</p>
       <p>
         <em>{error.statusText || error.message}</em>
       </p>
-    </main>
+    </div>
   );
 };
 

@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: ":id",
+    path: "puzzle/:id",
     element: <Single />,
   },
 ]);
