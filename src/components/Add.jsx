@@ -12,7 +12,7 @@ const Add = () => {
   return (
     <form onSubmit={handleAdd}>
       <input type="text" name="letters" placeholder="EXAMPLE" maxLength="10" />
-      <select name="attempts">
+      <select name="attempts" value="6">
         {[3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
           <option key={i} value={i}>
             {i}
