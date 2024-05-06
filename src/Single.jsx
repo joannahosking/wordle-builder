@@ -17,7 +17,7 @@ function Single(params) {
     const { data } = await supabase
       .from("words")
       .select()
-      .eq("id", id)
+      .eq("short_id", id)
       .single();
 
     setWord(data);

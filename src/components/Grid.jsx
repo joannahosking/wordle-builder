@@ -55,7 +55,6 @@ const Grid = (props) => {
 
   return (
     <div className="grid">
-      (The word is {word.letters})
       {guesses.map((guess, i) => {
         if (i === round) {
           return (
