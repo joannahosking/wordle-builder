@@ -42,6 +42,16 @@ This project is a custom Wordle game built using Vite and React. It allows users
     ```
     
     This will create a production-ready build in the `dist` folder.
+
+### Deploy
+
+2.  Deploy the project to github pages:
+    
+    ```
+    npm run deploy
+    ```
+    
+    This will deploy the `dist` folder using the gh-pages package.
     
 
 ### Additional Notes
