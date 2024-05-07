@@ -9,7 +9,7 @@ const Header = () => {
         target="noreferrer"
         className="github"
       >
-        <span>Visit on Github</span>
+        <span><span>Visit on </span>Github</span>
         <svg
           width="20"
           height="20"

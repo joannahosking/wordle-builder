@@ -15,9 +15,9 @@
 }
 
 :root {
-  --background-color: #fff;
+  --background-color: #f7f7f7;
   --text-color: #212121;
-  --accent-color: rgb(15, 0, 226);
+  --accent-color: rgb(105, 50, 255);
   --correct-color: #82e969;
   --misplaced-color: #ffe572;
 }
@@ -25,7 +25,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #212121;
-    --text-color: #ffffff;
+    --text-color: #f7f7f7;
     --accent-color: rgb(253, 180, 71);
   }
 }
@@ -35,13 +35,24 @@
   margin: 0;
 }
 
+html {
+  font-size: 16px;
+
+  @media (max-width: 950px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 650px) {
+    font-size: 12px;
+  }
+}
+
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: "Rokkitt";
-  font-size: 16px;
 }
 
 input,
@@ -72,6 +83,10 @@ button {
   min-height: 100vh;
   margin-inline: auto;
   padding: 2rem;
+
+  @media (max-width: 650px) {
+    padding: 1.5rem;
+  }
 }
 
 header {
@@ -107,6 +122,12 @@ header {
     font-size: 0.85rem;
     text-decoration: none;
     transition: all 0.25s ease-in-out;
+
+    @media (max-width: 650px) {
+      span span {
+        display: none;
+      }
+    }
 
     span {
       margin-top: 1px;
@@ -232,8 +253,47 @@ h2 {
 
 .grid {
   display: grid;
-  gap: 1rem;
+  gap: 0.5rem;
   margin-block: 2rem;
+}
+
+.puzzle-wrapper {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+
+  @media (max-width: 650px) {
+    gap: 0.5rem;
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  padding: 1rem 1.5rem;
+  background-color: var(--background-color);
+  border: 1px solid currentColor;
+  text-align: center;
+
+  &.loss {
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 900;
+
+    &:after {
+      content: "\2639";
+      display: block;
+      margin-top: 0.25rem;
+    }
+  }
+
+  &.win {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
 }
 
 .row {
@@ -244,14 +304,32 @@ h2 {
   font-weight: 900;
   text-transform: uppercase;
 
+  &.shake {
+    animation-name: shake;
+    animation-duration: 0.5s;
+  }
+
+  @media (max-width: 950px) {
+    font-size: 1.75rem;
+  }
+
+  @media (max-width: 650px) {
+    gap: 0.5rem;
+    font-size: 1.25rem;
+  }
+
   div {
     display: grid;
     place-items: center;
     width: 3ch;
     padding-top: 3px;
-    border: 1px solid currentColor;
+    border: 1px solid rgba(130 130 130 / 50%);
     color: currentColor;
     aspect-ratio: 1 / 1;
+
+    @media (max-width: 650px) {
+      padding-top: 0;
+    }
 
     &.correct {
       background-color: var(--correct-color);
@@ -267,6 +345,39 @@ h2 {
   }
 }
 
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  gap: 0.5rem;
+  max-width: 50rem;
+  margin-block-start: 2rem;
+  margin-inline: auto;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  button {
+    grid-column: span 2;
+    padding: 0.5rem 1rem;
+    background: #f7f7f7;
+    border: 1px solid #212121;
+    border-radius: 0;
+    color: #212121;
+
+    @media (max-width: 650px) {
+      padding: 0.5rem;
+    }
+
+    &:nth-child(11) {
+      grid-column: 2 / 4;
+    }
+
+    &:nth-child(20),
+    &:last-child {
+      grid-column: span 3;
+    }
+  }
+}
+
 footer {
   display: flex;
   justify-content: space-between;
@@ -277,4 +388,34 @@ footer {
 .error {
   margin-block: 2rem;
   text-align: center;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  10% {
+    transform: translateX(5px);
+  }
+
+  30% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  70% {
+    transform: translateX(-5px);
+  }
+
+  90% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }

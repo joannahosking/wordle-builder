@@ -1,5 +1,5 @@
 const Row = (props) => {
-  const { answer, guess, currentGuess, length } = { ...props };
+  const { answer, guess, currentGuess, length, shake } = { ...props };
 
   if (guess) {
     let letters = guess.split("");
@@ -25,7 +25,7 @@ const Row = (props) => {
     let letters = currentGuess.split("");
 
     return (
-      <div className="row current">
+      <div className={`row current ${shake ? 'shake' : ''}`}>
         {letters.map((letter, i) => (
           <div key={i} className="filled">
             {letter}
